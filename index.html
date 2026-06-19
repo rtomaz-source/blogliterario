@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog Literário</title>
+
+<style>
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+   font-family: 'Segoe UI', sans-serif;
+   background: linear-gradient(135deg, #0f1027, #1a1a2e, #162447);
+   color: #eaeaea;
+}
+
+/* HEADER */
+header {
+   text-align: center;
+   padding: 60px 20px;
+   background: linear-gradient(90deg, #4b3bff, #7a5cff);
+   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+header h1 {
+   font-size: 2.8rem;
+}
+
+header p {
+   opacity: 0.9;
+}
+
+/* CONTAINER */
+.container {
+   max-width: 1000px;
+   margin: 40px auto;
+   padding: 0 20px;
+}
+
+/* CARD */
+.post {
+   background: #162447;
+   border-radius: 18px;
+   padding: 25px;
+   margin-bottom: 30px;
+   box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+   transition: 0.3s;
+}
+
+.post:hover {
+   transform: translateY(-6px);
+}
+
+/* FLEX */
+.post-content {
+   display: flex;
+   gap: 20px;
+   flex-wrap: wrap;
+   align-items: center;
+   margin-top: 15px;
+}
+
+/* IMAGEM */
+.post-content img {
+   width: 220px;
+   border-radius: 14px;
+   box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* LIKE BOX */
+.like-box{
+   display: flex;
+   align-items: center;
+   gap: 12px;
+   margin-top: 10px;
+}
+
+.like-box button{
+   padding: 10px 14px;
+   border: none;
+   border-radius: 12px;
+   cursor: pointer;
+   color: white;
+   background: linear-gradient(90deg, #4b3bff, #7a5cff);
+   box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+   transition: 0.3s;
+}
+
+.like-box button:hover{
+   transform: scale(1.05);
+}
+
+.like-box button:disabled{
+   background: gray;
+   cursor: not-allowed;
+   transform: none;
+}
+
+.like{
+   font-weight: bold;
+   color: #cfcfff;
+   font-size: 1.1rem;
+}
+
+/* RESPONSIVO */
+@media (max-width: 600px) {
+   .post-content {
+       flex-direction: column;
+       text-align: center;
+   }
+
+   .post-content img {
+       width: 100%;
+       max-width: 280px;
+   }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+   <h1>Meu Blog Literário</h1>
+   <p>Resenhas de livros e personagens 📚</p>
+</header>
+
+<div class="container">
+
+   <!-- POST 1 -->
+   <div class="post">
+       <h2>Meu primeiro post</h2>
+       <p>Por: Rebeca</p>
+       <p>Bem-vinda ao meu blog literário!</p>
+
+       <div class="like-box">
+           <button onclick="like1()" id="btn1">💜 Curtir</button>
+           <span class="like" id="l1">0</span>
+       </div>
+   </div>
+
+   <!-- POST 2 -->
+   <div class="post">
+       <h2>Resenha: Estilhaça-me</h2>
+       <p>Por: Rebeca</p>
+
+       <div class="post-content">
+
+           <img src="images.webp"
+                alt="Capa do livro Estilhaça-me">
+
+           <div>
+               <p>
+               <strong>Estilhaça-me</strong> A história acompanha Juliette, uma jovem que tem um poder perigoso: o toque dela pode machucar ou até matar pessoas. Por causa disso, ela foi isolada do mundo e tratada como uma ameaça. Tudo muda quando ela é retirada desse confinamento por um regime autoritário que quer usar suas habilidades como arma.
+               💭 O que chama atenção no livro: o grande diferencial aqui é a narrativa. A escrita é bem poética, cheia de repetições, pensamentos intensos e frases que refletem o estado emocional da protagonista.
+               </p>
+
+               <div class="like-box">
+                   <button onclick="like2()" id="btn2">📖 Curtir</button>
+                   <span class="like" id="l2">0</span>
+               </div>
+           </div>
+       </div>
+
+       <div class="post-content" style="margin-top:20px;">
+           <img src="Aaron_Warner_by_PalinLineArt.webp"
+                alt="Aaron Warner">
+
+           <div>
+               <p><strong>Aaron Warner</strong> é um personagem icônico da história. Ele é fundamental para o desenvolvimento da trama, e apesar de ser totalmente compreensível não gostar dele nos primeiros livros, a nossa percepção sobre ele muda ao longo da história.</p>
+           </div>
+       </div>
+
+   </div>
+
+   <!-- POST 3 (JULIETTE CORRIGIDO) -->
+   <div class="post" style="margin-top:20px;">
+       <div class="post-content">
+
+           <img src="Juliette_Ferrars_by_PalinLineArt.webp"
+                alt="Juliette Ferrars">
+
+           <div>
+               <p>
+                   <strong>Juliette Ferrars</strong> vive isolada por acreditar que seu toque pode matar qualquer pessoa. No início, é frágil, insegura e cheia de medo. Ao longo da história, começa a descobrir sua força e questionar o mundo ao seu redor. Sua evolução é marcada por trauma, autoconhecimento e a busca por liberdade.
+               </p>
+           </div>
+       </div>
+   </div>
+
+</div>
+
+<script>
+let l1 = 0;
+let l2 = 0;
+
+const LIMITE = 10;
+
+function like1(){
+   if(l1 < LIMITE){
+      l1++;
+      document.getElementById("l1").textContent = l1;
+   }
+
+   if(l1 === LIMITE){
+      document.getElementById("btn1").disabled = true;
+      document.getElementById("btn1").textContent = "Limite atingido 💜";
+   }
+}
+
+function like2(){
+   if(l2 < LIMITE){
+      l2++;
+      document.getElementById("l2").textContent = l2;
+   }
+
+   if(l2 === LIMITE){
+      document.getElementById("btn2").disabled = true;
+      document.getElementById("btn2").textContent = "Limite atingido 📖";
+   }
+}
+</script>
+
+</body>
+</html>
