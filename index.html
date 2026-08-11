@@ -4,117 +4,281 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Literário</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Blog Literário - Estilhaça-me</title>
+    <style>
+        /* Variáveis de Cores - Tema Claro (Padrão) */
+        :root {
+            --bg-body: #f5f0ff;
+            --bg-card: #ffffff;
+            --text-primary: #2d1b4e;
+            --text-secondary: #5c4389;
+            --accent-purple: #7b2cbf;
+            --accent-hover: #9d4edd;
+            --card-border: #e2d4f7;
+            --shadow: rgba(123, 44, 191, 0.1);
+        }
+
+        /* Variáveis de Cores - Tema Escuro */
+        body.dark-mode {
+            --bg-body: #12091f;
+            --bg-card: #1e1233;
+            --text-primary: #f0e6ff;
+            --text-secondary: #c8b6e6;
+            --accent-purple: #9d4edd;
+            --accent-hover: #c77dff;
+            --card-border: #3c2463;
+            --shadow: rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-primary);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            border-bottom: 2px solid var(--accent-purple);
+            width: 100%;
+            max-width: 800px;
+        }
+
+        header h1 {
+            color: var(--accent-purple);
+            font-size: 2.5rem;
+            text-transform: lowercase;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        main {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        article {
+            background-color: var(--bg-card);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px var(--shadow);
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        article img {
+            width: 140px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid var(--accent-purple);
+        }
+
+        article div {
+            flex: 1;
+        }
+
+        article h2 {
+            color: var(--accent-purple);
+            margin-bottom: 5px;
+            text-transform: capitalize;
+        }
+
+        .artigo-autor {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        article p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .btn-reaction {
+            background-color: transparent;
+            border: 1px solid var(--accent-purple);
+            color: var(--text-primary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
+
+        .btn-reaction:hover {
+            background-color: var(--accent-purple);
+            color: #fff;
+        }
+
+        /* Botão Flutuante de Tema Escuro */
+        .btn-tema-escuro {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent-purple);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-tema-escuro:hover {
+            background-color: var(--accent-hover);
+        }
+
+        @media (max-width: 600px) {
+            article {
+                flex-direction: column;
+            }
+            article img {
+                width: 100%;
+                height: 200px;
+            }
+        }
+    </style>
 </head>
 
 <body>
+
     <header>
         <h1>blog literário</h1>
         <p>falar sobre livros</p>
     </header>
+
     <main>
         <article>
-            <img src="images.webp"
-                alt="Capa ou ilustração do livro Estilhaça-me">
+            <img src="images.webp" alt="Capa do livro Estilhaça-me">
             <div>
                 <h2>Estilhaça-me</h2>
                 <p class="artigo-autor">Por: Rebeca</p>
                 <p>A história acompanha Juliette, uma jovem que tem um poder perigoso: o toque dela pode machucar ou até matar pessoas. Por causa disso, ela foi isolada do mundo e tratada como uma ameaça. Tudo muda quando ela é retirada desse confinamento por um regime autoritário que quer usar suas habilidades como arma. 💭 O que chama atenção no livro: o grande diferencial aqui é a narrativa. A escrita é bem poética, cheia de repetições, pensamentos intensos e frases que refletem o estado emocional da protagonista.</p>
-
-                <button>❤️ <span>0</span></button>
-                <button>👍 <span>0</span></button>
+                <button class="btn-reaction">❤️ <span>0</span></button>
+                <button class="btn-reaction">👍 <span>0</span></button>
             </div>
         </article>
 
         <article>
-            <img src="juliette.jpg" alt="Ilustração ou foto referente à personagem Juliette Ferrars">
+            <img src="juliette.jpg" alt="Juliette Ferrars">
             <div>
                 <h2>Juliette Ferrars</h2>
                 <p class="artigo-autor">Por: Rebeca</p>
                 <p><strong>Juliette Ferrars</strong> é a grande protagonista da saga <em>Estilhaça-me</em>. Marcada por um poder devastador — um simples toque seu pode matar —, ela começa a história isolada e cheia de medos. Ao longo dos livros, acompanhamos uma das jornadas de amadurecimento e reconexão com a própria força mais intensas da literatura jovem adulta.</p>
-
-                <button>❤️ <span>0</span></button>
-                <button>👍 <span>0</span></button>
+                <button class="btn-reaction">❤️ <span>0</span></button>
+                <button class="btn-reaction">👍 <span>0</span></button>
             </div>
         </article>
 
         <article>
-            <img src="warner.jpg" alt="Ilustração ou foto referente ao personagem Aaron Warner">
+            <img src="warner.jpg" alt="Aaron Warner">
             <div>
                 <h2>Aaron Warner</h2>
                 <p class="artigo-autor">Por: Rebeca</p>
                 <p>Líder do Setor 45 e vilão enigmático no início da trama, <strong>Aaron Warner</strong> é um dos personagens mais complexos e aclamados da série. Por trás de sua postura fria, calculista e impecável, oculta-se um passado traumático e uma lealdade inabalável a quem ele realmente ama.</p>
-
-                <button>❤️ <span>0</span></button>
-                <button>👍 <span>0</span></button>
+                <button class="btn-reaction">❤️ <span>0</span></button>
+                <button class="btn-reaction">👍 <span>0</span></button>
             </div>
         </article>
 
         <article>
-            <img src="kenji.jpg" alt="Ilustração ou foto referente ao personagem Kenji Kishimoto">
+            <img src="kenji.jpg" alt="Kenji Kishimoto">
             <div>
                 <h2>Kenji Kishimoto</h2>
                 <p class="artigo-autor">Por: Rebeca</p>
                 <p>O alívio cômico e o coração do grupo, <strong>Kenji Kishimoto</strong> é um soldado com o poder da invisibilidade que conquista qualquer leitor logo nas primeiras páginas. Além do humor afiado e do carisma irresistível, Kenji se destaca como o amigo mais leal e protetor de toda a saga.</p>
-
-                <button>❤️ <span>0</span></button>
-                <button>👍 <span>0</span></button>
+                <button class="btn-reaction">❤️ <span>0</span></button>
+                <button class="btn-reaction">👍 <span>0</span></button>
             </div>
         </article>
 
         <article>
-            <img src="nazeera.jpg" alt="Ilustração ou foto referente à personagem Nazeera Ibrahim">
+            <img src="nazeera.jpg" alt="Nazeera Ibrahim">
             <div>
                 <h2>Nazeera Ibrahim</h2>
                 <p class="artigo-autor">Por: Rebeca</p>
                 <p>Introduzida nos livros posteriores da série, <strong>Nazeera Ibrahim</strong> é a destemida e perspicaz filha do comandante do Setor 1. Com habilidade de invisibilidade, mente estratégica e uma independência afiada, ela chega para chacoalhar o grupo e se tornar uma aliada indispensável.</p>
-
-                <button>❤️ <span>0</span></button>
-                <button>👍 <span>0</span></button>
+                <button class="btn-reaction">❤️ <span>0</span></button>
+                <button class="btn-reaction">👍 <span>0</span></button>
             </div>
         </article>
 
         <article>
-            <img src="adam.jpg" alt="Ilustração ou foto referente ao personagem Adam Kent">
+            <img src="adam.jpg" alt="Adam Kent">
             <div>
                 <h2>Adam Kent</h2>
                 <p class="artigo-autor">Por: Rebeca</p>
                 <p><strong>Adam Kent</strong> é o soldado que ajuda Juliette a escapar da prisão no primeiro livro. Com um passado compartilhado com a protagonista e uma habilidade única de anular o toque dela, Adam representa o desejo de uma vida simples e segura, guiado sempre pela proteção inflexível do seu irmão mais novo, James.</p>
-
-                <button>❤️ <span>0</span></button>
-                <button>👍 <span>0</span></button>
+                <button class="btn-reaction">❤️ <span>0</span></button>
+                <button class="btn-reaction">👍 <span>0</span></button>
             </div>
         </article>
 
         <article>
-            <img src="james.jpg" alt="Ilustração ou foto referente ao personagem James Kent">
+            <img src="james.jpg" alt="James Kent">
             <div>
                 <h2>James Kent</h2>
                 <p class="artigo-autor">Por: Rebeca</p>
                 <p>Irmão mais novo de Adam, <strong>James Kent</strong> traz leveza, inocência e maturidade surpreendente para o grupo. Apesar de ser apenas uma criança em meio a um conflito sombrio e perigoso, James conquista a todos com seu jeito esperto, carinhoso e visões diretas sobre o mundo ao seu redor.</p>
-
-                <button>❤️ <span>0</span></button>
-                <button>👍 <span>0</span></button>
+                <button class="btn-reaction">❤️ <span>0</span></button>
+                <button class="btn-reaction">👍 <span>0</span></button>
             </div>
         </article>
 
         <article>
-            <img src="paris.jpg" alt="Ilustração ou foto referente ao personagem Paris Anderson">
+            <img src="paris.jpg" alt="Paris Anderson">
             <div>
                 <h2>Paris Anderson</h2>
                 <p class="artigo-autor">Por: Rebeca</p>
                 <p>O grande antagonista que paira sobre a narrativa, <strong>Paris Anderson</strong> é o Comandante Supremo do Restabelecimento e pai de Aaron Warner. Figura fria, cruel e sem escrúpulos, ele simboliza a opressão do regime tirânico contra o qual os rebeldes lutam desesperadamente.</p>
-
-                <button>❤️ <span>0</span></button>
-                <button>👍 <span>0</span></button>
+                <button class="btn-reaction">❤️ <span>0</span></button>
+                <button class="btn-reaction">👍 <span>0</span></button>
             </div>
         </article>
-
-        <button class="btn-tema-escuro">🌓</button> 
     </main>
 
-    <script src="script.js"></script>
-</body>
+    <button class="btn-tema-escuro" id="btnTema">🌙</button>
 
+    <script>
+        const btnTema = document.getElementById('btnTema');
+        
+        btnTema.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                btnTema.textContent = '☀️';
+            } else {
+                btnTema.textContent = '🌙';
+            }
+        });
+    </script>
+
+</body>
 </html>
